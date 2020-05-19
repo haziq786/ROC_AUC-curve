@@ -1,0 +1,22 @@
+def rouc(t,r):
+   xt=pd.DataFrame(scale(x1))
+   X,x,Y,y=tts(xt,y1,test_size=t,random_state=r)
+   f1,t1,s1,_=RF(X,Y,x,y)
+   f2,t2,s2,_=DT(X,Y,x,y)
+   f3,t3,s3,_=LOR(X,Y,x,y)
+   f4,t4,s4,_=SM(X,Y,x,y)
+   plt.plot(f1, t1, lw = 3, label = 'Random forest: {:.2f}'.format(s1))
+   plt.plot(f2, t2, lw = 3, label = 'Decision tree: {:.2f}'.format(s2))
+   plt.plot(f3, t3, lw = 3, label = 'Logistic regression: {:.2f}'.format(s3))
+   plt.plot(f4, t4, lw = 3, label = 'SVM: {:.2f}'.format(s4))\n",
+   #plt.plot(fpr, tpr, lw = 2, label = 'ROC AUC: {:.2f}'.format(roc_auc))\n",
+   plt.plot([0, 1], [0, 1],linestyle = '--',\n",color = (0.6, 0.6, 0.6),\n",label = 'random guessing')
+   plt.plot([0, 0, 1], [0, 1, 1],\n"c,linestyle = ':',\n",color = 'black')\n",
+   plt.xlim([-0.05, 1.05])\n",
+   plt.ylim([-0.05, 1.05])\n",
+   plt.xlabel('false positive rate')\n",
+   plt.ylabel('true positive rate')\n",
+   plt.title('Receiver Operator Characteristic')\n",
+   plt.legend(loc = \"lower right\")\n",
+   plt.tight_layout()\n",
+   plt.show()
